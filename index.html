@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>扫码邮件信息</title>
+    <title>SGEI-Email-Template</title>
     <style>
         body {
             color: white;
@@ -94,13 +94,13 @@
             background-color: #2C3E50;
         }
 
- 
+
 
         .arrow {
             width: 80px;
             height: auto;
             display: block;
-   
+
         }
 
         /* Buttons section */
@@ -110,7 +110,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            
+
         }
 
         .email-buttons button {
@@ -182,11 +182,12 @@
             <div class="step">
                 <span class="step-number">2</span>
                 <span class="step-text">选择</span>
-                <img src="./icon.jpg" alt="Safari图标" class="safari-icon" style="width: 30px; height: 30px; margin: 0 10px; border-radius: 5px;">
+                <img src="./icon.jpg" alt="Safari图标" class="safari-icon"
+                    style="width: 30px; height: 30px; margin: 0 10px; border-radius: 5px;">
                 <span class="step-text">在默认浏览器中打开</span>
             </div>
         </div>
-  
+
     </div>
 
     <!-- Buttons section -->
@@ -202,10 +203,11 @@
         <button id="sendStudentCardEmail">发送邮件</button>
     </div>
     <div class="footer" style="text-align: center; padding: 20px; font-size: 14px;">
-        <p>&copy; 版权所有 (c) 2024 <a href="https://github.com/Ading163/Convenient-Assistant" target="_blank" style="color: #007bff; text-decoration: none;">Github</a></p>
+        <p>&copy; 版权所有 (c) <span id="currentYear"></span> <a href="https://github.com/Ading163/Convenient-Assistant"
+                target="_blank" style="color: #007bff; text-decoration: none;">Ding</a></p>
         <p>允许二次开发，仅需保留版权声明。</p>
     </div>
-    
+
 
     <script>
         // 定义邮件信息对象
@@ -250,6 +252,27 @@ THANK YOU FOR HELP `
             }
         };
 
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/),
+                    wx: u.indexOf("MicroMessenger") > 0 // 判断是否是微信
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+
+        // 判断是否是微信浏览器
+        if (browser.versions.wx) {
+            document.getElementById("container").style.display = "block";
+        } else {
+            document.getElementById("container").style.display = "none";
+        }
+
+        // 自动设置当前年份
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+
         // 绑定发送按钮功能
         function sendEmail(templateKey) {
             const emailInfo = emailTemplates[templateKey];
@@ -270,23 +293,6 @@ THANK YOU FOR HELP `
             sendEmail("studentCard");
         });
 
-        var browser = {
-            versions: function () {
-                var u = navigator.userAgent, app = navigator.appVersion;
-                return {
-                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/),
-                    wx: u.indexOf("MicroMessenger") > 0 // 判断是否是微信
-                };
-            }(),
-            language: (navigator.browserLanguage || navigator.language).toLowerCase()
-        }
-
-        // 判断是否是微信浏览器
-        if (browser.versions.wx) {
-            document.getElementById("container").style.display = "block";
-        } else {
-            document.getElementById("container").style.display = "none";
-        }
     </script>
 </body>
 
