@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扫码邮件信息</title>
+    <style>
+        body {
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('./dfsdgf.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h2 {
+            color: #F39C12;
+            font-size: 24px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        h4 {
+            color: #E74C3C;
+            font-size: 16px;
+            text-align: center;
+            margin-top: -15px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 998;
+            display: none;
+            padding: 20px;
+        }
+
+        .instruction {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .step-number {
+            background-color: #F39C12;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .button {
+            background-color: #34495E;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2C3E50;
+        }
+
+ 
+
+        .arrow {
+            width: 80px;
+            height: auto;
+            display: block;
+   
+        }
+
+        /* Buttons section */
+        .email-buttons {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .email-buttons button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #16A085;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .email-buttons button:hover {
+            background-color: #1ABC9C;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #BDC3C7;
+        }
+
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            h4 {
+                font-size: 1rem;
+            }
+
+            .button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .step-number {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+
+            .arrow {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="instruction">
+            <div class="step">
+                <span class="step-number">1</span>
+                <span class="step-text">点击右上角的</span>
+                <button class="button">...</button>
+                <span class="step-text">按钮</span>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <span class="step-text">选择</span>
+                <img src="safari-icon.png" alt="Safari图标" class="safari-icon" style="width: 30px; height: 30px; margin: 0 10px;">
+                <span class="step-text">在默认浏览器中打开</span>
+            </div>
+        </div>
+  
+    </div>
+
+    <!-- Buttons section -->
+    <div class="email-buttons">
+        <h2>地铁卡申请邮件</h2>
+        <button id="sendMRTCardEmail">发送邮件</button>
+
+        <h2>银行卡申请邮件</h2>
+        <button id="sendBankCardEmail">发送邮件</button>
+
+        <h2>学生卡申请邮件</h2>
+        <h4>需要上传证件照和底部带有签名的Full Offer</h4>
+        <button id="sendStudentCardEmail">发送邮件</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 邮件服务平台. 版权所有。</p>
+    </div>
+
+    <script>
+        // 定义邮件信息对象
+        const emailTemplates = {
+            mrtCard: {
+                to: "registrykd@segi.edu.my",
+                subject: "FOR STUDENT STATUS LETTER (MRT Card)",
+                body: `Dear Sir /Madam,
+
+Full Name: 
+Passport Number: 
+Student ID: 
+I am from China. I would like to request a confirmation letter from SEGi to apply for a student MRT card.
+
+Best Regard,`
+            },
+            bankCard: {
+                to: "registrykd@segi.edu.my",
+                subject: "FOR BANK RECOMMENDATION LETTER APPLICATION",
+                body: `Dear Sir /Madam,
+
+Full Name: 
+Passport Number: 
+Student ID: 
+Nationality: 
+Bank Name: 
+
+Apply for a bank card to apply for recommended credit for paying rent and daily living expenses
+
+Best Regard,`
+            },
+            studentCard: {
+                to: "registrykd@segi.edu.my",
+                subject: "Apply for new student id card",
+                body: `​Dear Sir /Madam,
+
+The following is my detailed information.
+1. FULL NAME :
+2. PASSPORT  :
+
+THANK YOU FOR HELP `
+            }
+        };
+
+        // 绑定发送按钮功能
+        function sendEmail(templateKey) {
+            const emailInfo = emailTemplates[templateKey];
+            const url = `mailto:${emailInfo.to}?subject=${encodeURIComponent(emailInfo.subject)}&body=${encodeURIComponent(emailInfo.body)}`;
+            window.location.href = url;
+        }
+
+        // 给每个按钮绑定点击事件
+        document.getElementById("sendMRTCardEmail").addEventListener("click", function () {
+            sendEmail("mrtCard");
+        });
+
+        document.getElementById("sendBankCardEmail").addEventListener("click", function () {
+            sendEmail("bankCard");
+        });
+
+        document.getElementById("sendStudentCardEmail").addEventListener("click", function () {
+            sendEmail("studentCard");
+        });
+
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/),
+                    wx: u.indexOf("MicroMessenger") > 0 // 判断是否是微信
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+
+        // 判断是否是微信浏览器
+        if (browser.versions.wx) {
+            document.getElementById("container").style.display = "block";
+        } else {
+            document.getElementById("container").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
