@@ -1,5 +1,34 @@
 # Project: H5 Web Email Sender
 
+
+
+## 项目介绍 (中文)
+该项目提供一个基于H5的网页界面，用于发送预配置的邮件模板给不同的收件人。页面设计为响应式，以确保在各种设备和屏幕尺寸上均能兼容。用户可以快速发送用于申请地铁卡、银行卡及学生证的邮件。
+
+### 功能特点
+- 针对特定用途的预配置邮件模板：
+  - 地铁卡申请
+  - 银行卡申请
+  - 学生证申请
+- 响应式设计，兼容移动端与桌面浏览器。
+- 简单且用户友好的界面。
+
+### 使用方法
+1. 在浏览器中打开网页。
+2. 点击对应的邮件类型按钮（如地铁卡申请）。
+3. 邮件客户端将自动打开并填充邮件内容。根据需要编辑详细信息。
+4. 直接发送邮件。
+
+### 使用技术
+- HTML5
+- CSS3
+- JavaScript
+
+
+---
+
+
+
 ## Introduction (English)
 This project provides an H5 web interface for sending pre-configured email templates to different recipients. The interface is designed to be responsive, ensuring compatibility across various devices and screen sizes. Users can quickly send emails for tasks such as applying for MRT cards, bank cards, and student ID cards.
 
@@ -33,32 +62,3 @@ This project provides an H5 web interface for sending pre-configured email templ
 
 ---
 
-## 项目介绍 (中文)
-该项目提供一个基于H5的网页界面，用于发送预配置的邮件模板给不同的收件人。页面设计为响应式，以确保在各种设备和屏幕尺寸上均能兼容。用户可以快速发送用于申请地铁卡、银行卡及学生证的邮件。
-
-### 功能特点
-- 针对特定用途的预配置邮件模板：
-  - 地铁卡申请
-  - 银行卡申请
-  - 学生证申请
-- 响应式设计，兼容移动端与桌面浏览器。
-- 简单且用户友好的界面。
-
-### 使用方法
-1. 在浏览器中打开网页。
-2. 点击对应的邮件类型按钮（如地铁卡申请）。
-3. 邮件客户端将自动打开并填充邮件内容。根据需要编辑详细信息。
-4. 直接发送邮件。
-
-### 使用技术
-- HTML5
-- CSS3
-- JavaScript
-
-
----
-
-## License / 版权信息
-This project is open-sourced under the MIT License. You are free to use, modify, and distribute it as per the license terms.
-
-本项目采用MIT开源协议。您可以按照协议条款自由使用、修改和分发该项目。
