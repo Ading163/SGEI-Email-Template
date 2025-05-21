@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGEI-Student-Services</title>
+    <title>EduLink 学生服务 —— 留学生专属一站式平台</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
     <script>
@@ -89,7 +89,7 @@
                 <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-6">
                     <i class="fa fa-exclamation-triangle text-accent text-4xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-dark mb-4">请在默认浏览器中打开</h3>
+                <h3 class="text-2xl font-bold text-dark mb-4">务必在默认浏览器中打开</h3>
                 <p class="text-dark/70 mb-6">
                     为了确保邮件功能正常使用，请点击右上角按钮，选择在浏览器中打开此页面。
                 </p>
@@ -136,7 +136,7 @@
                 <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                     <i class="fa fa-graduation-cap text-white text-xl"></i>
                 </div>
-                <span class="text-primary font-bold text-lg">SGE1 学生服务</span>
+                <span class="text-primary font-bold text-lg">EduLink</span>
             </div>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#process" class="text-dark hover:text-primary transition-colors">申请流程</a>
@@ -164,7 +164,7 @@
                     快速申请各类校园服务，让留学生活更加便捷高效
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#services" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300 flex items-center justify-center gap-2">
+                    <a href="#process" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300 flex items-center justify-center gap-2">
                         <i class="fa fa-rocket"></i>
                         开始使用
                     </a>
@@ -454,19 +454,19 @@
         checkBrowser();
 
         // 关闭浏览器检测模态框
-        document.getElementById('closeBrowserModal').addEventListener('click', () => {
-            const browserOverlay = document.getElementById('browserOverlay');
-            const browserModal = document.getElementById('browserModal');
+        // document.getElementById('closeBrowserModal').addEventListener('click', () => {
+        //     const browserOverlay = document.getElementById('browserOverlay');
+        //     const browserModal = document.getElementById('browserModal');
             
-            browserModal.classList.remove('scale-100', 'opacity-100');
-            browserModal.classList.add('scale-95', 'opacity-0');
+        //     browserModal.classList.remove('scale-100', 'opacity-100');
+        //     browserModal.classList.add('scale-95', 'opacity-0');
             
-            setTimeout(() => {
-                browserOverlay.classList.add('hidden');
-                // 恢复滚动
-                document.body.style.overflow = 'auto';
-            }, 300);
-        });
+        //     setTimeout(() => {
+        //         browserOverlay.classList.add('hidden');
+        //         // 恢复滚动
+        //         document.body.style.overflow = 'auto';
+        //     }, 300);
+        // });
 
         // 导航栏滚动效果
         window.addEventListener('scroll', () => {
