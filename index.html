@@ -79,11 +79,11 @@
     </style>
 </head>
 <body class="bg-gradient-blue min-h-screen font-inter">
-    <!-- 微信提示 -->
-    <div id="wechatTip" class="fixed top-0 left-0 w-full bg-white shadow-md py-3 px-4 z-50 hidden">
+    <!-- 浏览器提示 -->
+    <div id="browserTip" class="fixed top-0 left-0 w-full bg-accent/90 text-white shadow-md py-3 px-4 z-50 hidden">
         <div class="container mx-auto flex items-center justify-center">
-            <i class="fa fa-info-circle text-primary mr-2"></i>
-            <p class="text-dark text-sm md:text-base">温馨提示：推荐在浏览器中打开以获得最佳体验</p>
+            <i class="fa fa-exclamation-triangle mr-2"></i>
+            <p class="text-sm md:text-base">请在默认浏览器中打开此页面以确保邮件功能正常使用</p>
         </div>
     </div>
 
@@ -94,7 +94,7 @@
                 <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                     <i class="fa fa-graduation-cap text-white text-xl"></i>
                 </div>
-                <span class="text-primary font-bold text-lg">SGEI 学生服务</span>
+                <span class="text-primary font-bold text-lg">SEG1 学生服务</span>
             </div>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#process" class="text-dark hover:text-primary transition-colors">申请流程</a>
@@ -270,10 +270,6 @@
                             <span>认识来自世界各地的新朋友</span>
                         </li>
                     </ul>
-                    <a href="#wechat" class="inline-block px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300 btn-pulse">
-                        <i class="fa fa-qrcode mr-2"></i>
-                        扫码加入
-                    </a>
                 </div>
                 <div class="md:w-1/2 text-center">
                     <div class="bg-white p-6 rounded-2xl shadow-xl inline-block animate-float cursor-pointer" id="qrcodeContainer">
@@ -344,10 +340,10 @@
         <div class="container mx-auto px-4">
             <div class="text-center">
                 <p class="text-dark/60 text-sm">
-                    &copy; <span id="currentYear"></span> <a href="https://github.com/Ading163/Convenient-Assistant" target="_blank">Ding</a> 保留版权
+                    &copy; <span id="currentYear"></span> <a href="https://github.com/Ading163/SGEI-Email-Template" target="_blank">Ding</a> 保留版权
                 </p>
                 <p class="text-dark/40 text-xs mt-2">
-                    本网站内容仅供参考，不代表任何官方立场
+                    本网站内容由AI生成 仅供参考，不代表任何官方立场
                 </p>
             </div>
         </div>
@@ -370,7 +366,7 @@
                     返回
                 </button>
                 <button id="confirmSend" class="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors">
-                    确认发送
+                    确认
                 </button>
             </div>
         </div>
@@ -390,11 +386,19 @@
         // 当前年份
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // 判断是否微信内打开
-        const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
-        if (isWeChat) {
-            document.getElementById('wechatTip').style.display = 'block';
+        // 检测是否在微信或其他应用内置浏览器中打开
+        function checkBrowser() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isWeChat = userAgent.indexOf('micromessenger') !== -1;
+            const isQQ = userAgent.indexOf('qq/') !== -1;
+            const isDingTalk = userAgent.indexOf('dingtalk') !== -1;
+            
+            if (isWeChat || isQQ || isDingTalk) {
+                document.getElementById('browserTip').classList.remove('hidden');
+            }
         }
+        
+        checkBrowser();
 
         // 导航栏滚动效果
         window.addEventListener('scroll', () => {
@@ -454,16 +458,16 @@
             currentTemplateKey = key;
             const template = emailTemplates[key];
             
-            // 填充模态框内容
+            // 填充模态框内容，收件人和主题字段设为只读
             modalBody.innerHTML = `
                 <div class="space-y-4">
                     <div>
                         <label class="block text-dark/70 mb-2">收件人:</label>
-                        <input type="text" value="${template.to}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" readonly>
+                        <input type="text" value="${template.to}" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-dark/70" readonly>
                     </div>
                     <div>
                         <label class="block text-dark/70 mb-2">主题:</label>
-                        <input type="text" value="${template.subject}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        <input type="text" value="${template.subject}" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-dark/70" readonly>
                     </div>
                     <div>
                         <label class="block text-dark/70 mb-2">内容:</label>
@@ -495,8 +499,12 @@
         // 发送邮件
         function sendEmail() {
             const template = emailTemplates[currentTemplateKey];
-            const mailUrl = `mailto:${template.to}?subject=${encodeURIComponent(template.subject)}&body=${encodeURIComponent(template.body)}`;
-            window.location.href = mailUrl;
+            // 获取用户修改后的内容
+            const content = document.querySelector('#modalBody textarea').value;
+            const mailUrl = `mailto:${template.to}?subject=${encodeURIComponent(template.subject)}&body=${encodeURIComponent(content)}`;
+            
+            // 尝试在新窗口打开邮件客户端
+            window.open(mailUrl, '_blank');
             closeModal();
         }
 
