@@ -75,15 +75,57 @@
                 max-width: 90%;
                 max-height: 80vh;
             }
+            .browser-overlay {
+                backdrop-filter: blur(8px);
+            }
         }
     </style>
 </head>
 <body class="bg-gradient-blue min-h-screen font-inter">
-    <!-- 浏览器提示 -->
-    <div id="browserTip" class="fixed top-0 left-0 w-full bg-accent/90 text-white shadow-md py-3 px-4 z-50 hidden">
-        <div class="container mx-auto flex items-center justify-center">
-            <i class="fa fa-exclamation-triangle mr-2"></i>
-            <p class="text-sm md:text-base">请在默认浏览器中打开此页面以确保邮件功能正常使用</p>
+    <!-- 浏览器检测遮罩 -->
+    <div id="browserOverlay" class="fixed inset-0 bg-dark/80 browser-overlay flex items-center justify-center z-[100] hidden">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="browserModal">
+            <div class="text-center mb-6">
+                <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fa fa-exclamation-triangle text-accent text-4xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark mb-4">请在默认浏览器中打开</h3>
+                <p class="text-dark/70 mb-6">
+                    为了确保邮件功能正常使用，请点击右上角按钮，选择在浏览器中打开此页面。
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-xl p-4">
+                    <div class="flex items-start gap-4">
+                        <div class="text-accent text-xl mt-1">
+                            <i class="fa fa-mobile"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark mb-1">在微信中</h4>
+                            <p class="text-dark/70 text-sm">点击右上角「...」，选择「在浏览器中打开」</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-4">
+                    <div class="flex items-start gap-4">
+                        <div class="text-accent text-xl mt-1">
+                            <i class="fa fa-qq"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark mb-1">在QQ中</h4>
+                            <p class="text-dark/70 text-sm">点击右上角「...」，选择「用浏览器打开」</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 flex justify-center">
+                <button id="closeBrowserModal" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300">
+                    我已在浏览器中打开
+                </button>
+            </div>
         </div>
     </div>
 
@@ -94,7 +136,7 @@
                 <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                     <i class="fa fa-graduation-cap text-white text-xl"></i>
                 </div>
-                <span class="text-primary font-bold text-lg">SEG1 学生服务</span>
+                <span class="text-primary font-bold text-lg">SGE1 学生服务</span>
             </div>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#process" class="text-dark hover:text-primary transition-colors">申请流程</a>
@@ -125,10 +167,6 @@
                     <a href="#process" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300 flex items-center justify-center gap-2">
                         <i class="fa fa-rocket"></i>
                         开始使用
-                    </a>
-                    <a href="#wechat" class="px-8 py-3 bg-white hover:bg-gray-50 text-primary border border-primary/20 rounded-full font-medium shadow-md transition-all duration-300 flex items-center justify-center gap-2">
-                        <i class="fa fa-weixin"></i>
-                        加入社群
                     </a>
                 </div>
             </div>
@@ -343,7 +381,7 @@
                     &copy; <span id="currentYear"></span> <a href="https://github.com/Ading163/SGEI-Email-Template" target="_blank">Ding</a> 保留版权
                 </p>
                 <p class="text-dark/40 text-xs mt-2">
-                    本网站内容由AI生成 仅供参考，不代表任何官方立场
+                    本网站由AI生成 内容仅供参考，不代表任何官方立场，如有侵权联系删除
                 </p>
             </div>
         </div>
@@ -366,7 +404,7 @@
                     返回
                 </button>
                 <button id="confirmSend" class="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors">
-                    确认
+                    确认发送
                 </button>
             </div>
         </div>
@@ -394,11 +432,37 @@
             const isDingTalk = userAgent.indexOf('dingtalk') !== -1;
             
             if (isWeChat || isQQ || isDingTalk) {
-                document.getElementById('browserTip').classList.remove('hidden');
+                // 显示浏览器检测遮罩
+                const browserOverlay = document.getElementById('browserOverlay');
+                const browserModal = document.getElementById('browserModal');
+                
+                browserOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    browserModal.classList.remove('scale-95', 'opacity-0');
+                    browserModal.classList.add('scale-100', 'opacity-100');
+                }, 10);
+                
+                // 阻止用户滚动
+                document.body.style.overflow = 'hidden';
             }
         }
         
         checkBrowser();
+
+        // 关闭浏览器检测模态框
+        document.getElementById('closeBrowserModal').addEventListener('click', () => {
+            const browserOverlay = document.getElementById('browserOverlay');
+            const browserModal = document.getElementById('browserModal');
+            
+            browserModal.classList.remove('scale-100', 'opacity-100');
+            browserModal.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                browserOverlay.classList.add('hidden');
+                // 恢复滚动
+                document.body.style.overflow = 'auto';
+            }, 300);
+        });
 
         // 导航栏滚动效果
         window.addEventListener('scroll', () => {
