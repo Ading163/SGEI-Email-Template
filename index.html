@@ -73,6 +73,7 @@
             }
             .image-preview {
                 max-width: 90%;
+                max-height: 80vh;
             }
             .browser-overlay {
                 backdrop-filter: blur(8px);
@@ -286,39 +287,45 @@
         </div>
     </section>
 
-    <!-- 微信群区域 -->
-    <section id="wechat" class="py-16 md:py-24 bg-white relative">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 shadow-lg shadow-primary/5">
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-dark mb-4">
-                        加入新生交流群
-                    </h2>
-                    <p class="text-dark/70 mb-6">
-                        扫码加入我们的新生交流群，获取最新资讯、解答疑问，与同学们一起开启留学生活
-                    </p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start gap-3">
-                            <i class="fa fa-check-circle text-secondary mt-1"></i>
-                            <span>获取最新校园通知和活动信息</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa fa-check-circle text-secondary mt-1"></i>
-                            <span>与学长学姐交流学习和生活经验</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa fa-check-circle text-secondary mt-1"></i>
-                            <span>认识来自世界各地的新朋友</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 text-center">
-                    <div class="bg-white p-6 rounded-2xl shadow-xl inline-block animate-float cursor-pointer" id="qrcodeContainer">
-                        <div class="square-container max-w-[256px] mx-auto">
-                            <img src="./Groups.jpg" alt="微信群二维码" class="w-full object-cover rounded-xl border-4 border-primary/20" id="qrcodeImage">
-                        </div>
-                        <p class="mt-4 font-medium text-dark">扫描二维码加入微信群</p>
+<!-- 微信群区域 -->
+<section id="wechat" class="py-16 md:py-24 bg-white relative">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-14 shadow-lg shadow-primary/5">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-dark mb-4">
+                    加入新生交流群
+                </h2>
+                <p class="text-dark/70 mb-6">
+                    扫码加入我们的新生交流群，获取最新资讯、解答疑问，与同学们一起开启留学生活
+                </p>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-secondary mt-1"></i>
+                        <span>获取最新校园通知和活动信息</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-secondary mt-1"></i>
+                        <span>与学长学姐交流学习和生活经验</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-secondary mt-1"></i>
+                        <span>认识来自世界各地的新朋友</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="md:w-1/2 relative text-center flex flex-col items-center justify-center">
+                <div class="bg-white p-6 rounded-2xl shadow-xl inline-block animate-float cursor-pointer" id="qrcodeContainer">
+                    <!-- 移除固定高度限制，使用auto高度 -->
+                    <div class="max-w-[300px] w-full">
+                        <img src="./Groups.jpg" alt="微信群二维码" class="w-full h-auto rounded-xl border-4 border-primary/20" id="qrcodeImage">
                     </div>
+                    <p class="mt-4 font-medium text-dark">扫描二维码加入微信群</p>
+                </div>
+                
+                <!-- 移动端优化：添加点击放大图片的交互提示 -->
+                <div class="hidden md:hidden mt-4 text-sm text-dark/50">
+                    （点击图片可查看完整二维码）
                 </div>
             </div>
         </div>
