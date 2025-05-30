@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduLink 学生服务 - 一站式校园服务</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="tailwind.config.js"></script> -->
+    <link rel="stylesheet" href="css/style.css">
     <script>
         tailwind.config = {
             theme: {
@@ -28,63 +31,18 @@
             }
         }
     </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .bg-gradient-blue {
-                background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
-            }
-            .text-gradient {
-                background-clip: text;
-                -webkit-background-clip: text;
-                color: transparent;
-                background-image: linear-gradient(135deg, #165DFF 0%, #3B82F6 100%);
-            }
-            .animate-float {
-                animation: float 6s ease-in-out infinite;
-            }
-            .card-shadow {
-                box-shadow: 0 10px 25px -5px rgba(22, 93, 255, 0.1);
-            }
-            .card-hover {
-                transition: all 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 20px 30px -10px rgba(22, 93, 255, 0.15);
-            }
-            .btn-pulse {
-                animation: pulse 2s infinite;
-            }
-            @keyframes float {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-15px); }
-                100% { transform: translateY(0px); }
-            }
-            @keyframes pulse {
-                0% { box-shadow: 0 0 0 0 rgba(22, 93, 255, 0.4); }
-                70% { box-shadow: 0 0 0 10px rgba(22, 93, 255, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(22, 93, 255, 0); }
-            }
-            .square-container {
-                aspect-ratio: 1/1;
-            }
-            .image-preview {
-                max-width: 90%;
-                max-height: 80vh;
-            }
-            .browser-overlay {
-                backdrop-filter: blur(8px);
-            }
-        }
-    </style>
+    >
+    <script>
+
+    </script>
 </head>
+
 <body class="bg-gradient-blue min-h-screen font-inter">
     <!-- 浏览器检测遮罩 -->
-    <div id="browserOverlay" class="fixed inset-0 bg-dark/80 browser-overlay flex items-center justify-center z-[100] hidden">
-        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="browserModal">
+    <div id="browserOverlay"
+        class="fixed inset-0 bg-dark/80 browser-overlay flex items-center justify-center z-[100] hidden">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0"
+            id="browserModal">
             <div class="text-center mb-6">
                 <div class="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-6">
                     <i class="fa fa-exclamation-triangle text-accent text-4xl"></i>
@@ -94,7 +52,7 @@
                     为了确保邮件功能正常使用，请点击右上角按钮，选择在浏览器中打开此页面。
                 </p>
             </div>
-            
+
             <div class="space-y-4">
                 <div class="bg-gray-50 rounded-xl p-4">
                     <div class="flex items-start gap-4">
@@ -107,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-50 rounded-xl p-4">
                     <div class="flex items-start gap-4">
                         <div class="text-accent text-xl mt-1">
@@ -120,9 +78,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="mt-8 flex justify-center">
-                <button id="closeBrowserModal" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300">
+                <button id="closeBrowserModal"
+                    class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300">
                     我已在浏览器中打开
                 </button>
             </div>
@@ -130,7 +89,8 @@
     </div>
 
     <!-- 导航栏 -->
-    <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-40 transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-40 transition-all duration-300"
+        id="navbar">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
@@ -139,10 +99,19 @@
                 <span class="text-primary font-bold text-lg">EduLink</span>
             </div>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#process" class="text-dark hover:text-primary transition-colors">申请流程</a>
-                <a href="#services" class="text-dark hover:text-primary transition-colors">服务中心</a>
-                <a href="#wechat" class="text-dark hover:text-primary transition-colors">加入社群</a>
+                <a href="#process" class="application-Process text-dark hover:text-primary transition-colors">申请流程</a>
+                <a href="#services" class="server-button text-dark hover:text-primary transition-colors">服务中心</a>
+                <a href="#wechat" class="join-button text-dark hover:text-primary transition-colors">加入社群</a>
             </div>
+            <div class="flex items-center">
+                <select id="lang-select"
+                    class="text-dark border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-primary focus:border-primary">
+                    <option id="lang-en" value="en">English</option>
+                    <option id="lang-zh" value="zh">中文</option>
+                    <option id="lang-ms" value="ms">Bahasa Melayu</option>
+                </select>
+            </div>
+
             <button class="md:hidden text-primary text-xl">
                 <i class="fa fa-bars"></i>
             </button>
@@ -157,18 +126,20 @@
         </div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-6 text-gradient">
+                <h1 class="hero-title text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-6 text-gradient">
                     一站式学生服务
                 </h1>
-                <p class="text-[clamp(1rem,2vw,1.25rem)] text-dark/70 mb-10 max-w-2xl mx-auto">
+                <p class="hero-subtitle text-[clamp(1rem,2vw,1.25rem)] text-dark/70 mb-10 max-w-2xl mx-auto">
                     快速申请各类校园服务，让留学生活更加便捷高效
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#process" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300 flex items-center justify-center gap-2">
+                    <a href="#process"
+                        class="start-button px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-lg shadow-primary/20 transition-all duration-300 flex items-center justify-center gap-2">
                         <i class="fa fa-rocket"></i>
                         开始使用
                     </a>
-                    <a href="#wechat" class="px-8 py-3 bg-white hover:bg-gray-50 text-primary border border-primary/20 rounded-full font-medium shadow-md transition-all duration-300 flex items-center justify-center gap-2">
+                    <a href="#wechat"
+                        class="join-button px-8 py-3 bg-white hover:bg-gray-50 text-primary border border-primary/20 rounded-full font-medium shadow-md transition-all duration-300 flex items-center justify-center gap-2">
                         <i class="fa fa-weixin"></i>
                         加入社群
                     </a>
@@ -181,10 +152,10 @@
     <section id="process" class="py-16 md:py-24 bg-white relative">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
+                <h2 class="process-title text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
                     简单三步，轻松申请
                 </h2>
-                <p class="text-dark/70 max-w-2xl mx-auto">
+                <p class="process-subtitle text-dark/70 max-w-2xl mx-auto">
                     我们简化了申请流程，让你足不出户就能完成所有手续
                 </p>
             </div>
@@ -194,8 +165,8 @@
                     <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                         <span class="text-primary font-bold text-xl">1</span>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">选择服务</h3>
-                    <p class="text-dark/70">
+                    <h3 class="step1-title text-xl font-bold text-dark mb-3">选择服务</h3>
+                    <p class="step1-desc text-dark/70">
                         浏览我们提供的各类服务，选择你需要申请的项目
                     </p>
                 </div>
@@ -204,8 +175,8 @@
                     <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                         <span class="text-primary font-bold text-xl">2</span>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">填写信息</h3>
-                    <p class="text-dark/70">
+                    <h3 class="step2-title text-xl font-bold text-dark mb-3">填写信息</h3>
+                    <p class="step2-desc text-dark/70">
                         点击按钮，系统会自动填写邮件模板，你只需补充个人信息
                     </p>
                 </div>
@@ -214,8 +185,8 @@
                     <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                         <span class="text-primary font-bold text-xl">3</span>
                     </div>
-                    <h3 class="text-xl font-bold text-dark mb-3">发送邮件</h3>
-                    <p class="text-dark/70">
+                    <h3 class="step3-title text-xl font-bold text-dark mb-3">发送邮件</h3>
+                    <p class="step3-desc text-dark/70">
                         确认信息无误后，点击发送，等待学校相关部门处理
                     </p>
                 </div>
@@ -227,10 +198,10 @@
     <section id="services" class="py-16 md:py-24 bg-gradient-blue relative">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
+                <h2 class="service-title text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
                     便捷服务申请
                 </h2>
-                <p class="text-dark/70 max-w-2xl mx-auto">
+                <p class="service-subtitle text-dark/70 max-w-2xl mx-auto">
                     只需一键，即可完成各类校园服务申请，无需繁琐流程
                 </p>
             </div>
@@ -238,14 +209,17 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- 地铁卡申请 -->
                 <div class="bg-white rounded-2xl card-shadow card-hover p-8 relative overflow-hidden group">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-150"></div>
+                    <div
+                        class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-150">
+                    </div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                             <i class="fa fa-subway text-primary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-dark mb-3">地铁卡申请</h3>
-                        <p class="text-dark/70 mb-6">用于申请学生优惠地铁卡，享受交通折扣</p>
-                        <button id="sendMRTCardEmail" class="w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2">
+                        <h3 class="mrt-card-title text-xl font-bold text-dark mb-3">地铁卡申请</h3>
+                        <p class="mrt-card-desc text-dark/70 mb-6">用于申请学生优惠地铁卡，享受交通折扣</p>
+                        <button id="sendMRTCardEmail"
+                            class="apply-Now w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2">
                             <i class="fa fa-paper-plane"></i>
                             立即申请
                         </button>
@@ -254,14 +228,17 @@
 
                 <!-- 银行卡申请 -->
                 <div class="bg-white rounded-2xl card-shadow card-hover p-8 relative overflow-hidden group">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-secondary/10 transition-transform duration-500 group-hover:scale-150"></div>
+                    <div
+                        class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-secondary/10 transition-transform duration-500 group-hover:scale-150">
+                    </div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
                             <i class="fa fa-credit-card text-secondary text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-dark mb-3">银行卡申请</h3>
-                        <p class="text-dark/70 mb-6">用于申请银行推荐函，快速办理本地银行卡</p>
-                        <button id="sendBankCardEmail" class="w-full py-3 bg-secondary hover:bg-secondary/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2">
+                        <h3 class="bank-card-title text-xl font-bold text-dark mb-3">银行卡申请</h3>
+                        <p class="bank-card-desc text-dark/70 mb-6">用于申请银行推荐函，快速办理本地银行卡</p>
+                        <button id="sendBankCardEmail"
+                            class="apply-Now w-full py-3 bg-secondary hover:bg-secondary/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2">
                             <i class="fa fa-paper-plane"></i>
                             立即申请
                         </button>
@@ -270,14 +247,17 @@
 
                 <!-- 学生卡申请 -->
                 <div class="bg-white rounded-2xl card-shadow card-hover p-8 relative overflow-hidden group">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-accent/10 transition-transform duration-500 group-hover:scale-150"></div>
+                    <div
+                        class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-accent/10 transition-transform duration-500 group-hover:scale-150">
+                    </div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
                             <i class="fa fa-id-card text-accent text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-dark mb-3">学生卡申请</h3>
-                        <p class="text-dark/70 mb-6">需上传证件照及带签名的Full Offer，补办或新办学生卡</p>
-                        <button id="sendStudentCardEmail" class="w-full py-3 bg-accent hover:bg-accent/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2">
+                        <h3 class="student-card-title text-xl font-bold text-dark mb-3">学生卡申请</h3>
+                        <p class="student-card-desc text-dark/70 mb-6">需上传证件照及带签名的Full Offer，补办或新办学生卡</p>
+                        <button id="sendStudentCardEmail"
+                            class="apply-Now w-full py-3 bg-accent hover:bg-accent/90 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2">
                             <i class="fa fa-paper-plane"></i>
                             立即申请
                         </button>
@@ -287,45 +267,49 @@
         </div>
     </section>
 
-<!-- 微信群区域 -->
-<section id="wechat" class="py-16 md:py-24 bg-white relative">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-14 shadow-lg shadow-primary/5">
-            <div class="md:w-1/2 text-center md:text-left">
-                <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-dark mb-4">
-                    加入新生交流群
-                </h2>
-                <p class="text-dark/70 mb-6">
-                    扫码加入我们的新生交流群，获取最新资讯、解答疑问，与同学们一起开启留学生活
-                </p>
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-start gap-3">
-                        <i class="fa fa-check-circle text-secondary mt-1"></i>
-                        <span>获取最新校园通知和活动信息</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa fa-check-circle text-secondary mt-1"></i>
-                        <span>与学长学姐交流学习和生活经验</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa fa-check-circle text-secondary mt-1"></i>
-                        <span>认识来自世界各地的新朋友</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="md:w-1/2 relative text-center flex flex-col items-center justify-center">
-                <div class="bg-white p-6 rounded-2xl shadow-xl inline-block animate-float cursor-pointer" id="qrcodeContainer">
-                    <!-- 移除固定高度限制，使用auto高度 -->
-                    <div class="max-w-[300px] w-full">
-                        <img src="./Groups.jpg" alt="微信群二维码" class="w-full h-auto rounded-xl border-4 border-primary/20" id="qrcodeImage">
-                    </div>
-                    <p class="mt-4 font-medium text-dark">扫描二维码加入微信群</p>
+    <!-- 微信群区域 -->
+    <section id="wechat" class="py-16 md:py-24 bg-white relative">
+        <div class="container mx-auto px-4">
+            <div
+                class="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-primary/10 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-14 shadow-lg shadow-primary/5">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="wechat-title text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-dark mb-4">
+                        加入新生交流群
+                    </h2>
+                    <p class="wechat-desc text-dark/70 mb-6">
+                        扫码加入我们的新生交流群，获取最新资讯、解答疑问，与同学们一起开启留学生活
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-secondary mt-1"></i>
+                            <span class="wechat-benefit">获取最新校园通知和活动信息</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-secondary mt-1"></i>
+                            <span class="wechat-benefit">与学长学姐交流学习和生活经验</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-secondary mt-1"></i>
+                            <span class="wechat-benefit">认识来自世界各地的新朋友</span>
+                        </li>
+                    </ul>
                 </div>
-                
-                <!-- 移动端优化：添加点击放大图片的交互提示 -->
-                <div class="hidden md:hidden mt-4 text-sm text-dark/50">
-                    （点击图片可查看完整二维码）
+
+                <div class="md:w-1/2 relative text-center flex flex-col items-center justify-center">
+                    <div class="flex flex-col items-center bg-white p-6 rounded-2xl shadow-xl inline-block animate-float cursor-pointer"
+                        id="qrcodeContainer">
+                        <!-- 移除固定高度限制，使用auto高度 -->
+                        <div class="max-w-[300px] w-full">
+                            <img src="./20250531020850.jpg" alt="微信群二维码"
+                                class="w-full h-auto rounded-xl border-4 border-primary/20" id="qrcodeImage">
+                        </div>
+                        <p class="scan-QR mt-4 font-medium text-dark">扫描二维码加入微信群</p>
+                    </div>
+
+                    <!-- 移动端优化：添加点击放大图片的交互提示 -->
+                    <div class="hidden md:hidden mt-4 text-sm text-dark/50">
+                        （点击图片可查看完整二维码）
+                    </div>
                 </div>
             </div>
         </div>
@@ -335,46 +319,49 @@
     <section class="py-16 md:py-24 bg-gradient-blue">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
+                <h2 class="faq-title text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
                     常见问题
                 </h2>
-                <p class="text-dark/70 max-w-2xl mx-auto">
+                <p class="faq-subtitle text-dark/70 max-w-2xl mx-auto">
                     解答你在使用过程中可能遇到的问题
                 </p>
             </div>
 
             <div class="max-w-3xl mx-auto space-y-4">
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                    <button class="faq-toggle w-full px-6 py-4 text-left font-medium text-dark flex justify-between items-center">
-                        <span>申请需要多长时间才能得到回复？</span>
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left font-medium text-dark flex justify-between items-center">
+                        <span class="faq-question">申请需要多长时间才能得到回复？</span>
                         <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="pb-4 text-dark/70">
-                            预计1-3天会收到邮件通知你去取推荐信件或学生卡。
+                        <p class="faq-answer pb-4 text-dark/70">
+                            预计1 - 3天会收到邮件通知你去取推荐信件或学生卡。
                         </p>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                    <button class="faq-toggle w-full px-6 py-4 text-left font-medium text-dark flex justify-between items-center">
-                        <span>申请材料需要哪些？</span>
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left font-medium text-dark flex justify-between items-center">
+                        <span class="faq-question">申请材料需要哪些？</span>
                         <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="pb-4 text-dark/70">
+                        <p class="faq-answer pb-4 text-dark/70">
                             申请材料一般包括：姓名、学号、护照号码、电话号码、Full offer和证件照。
                         </p>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                    <button class="faq-toggle w-full px-6 py-4 text-left font-medium text-dark flex justify-between items-center">
-                        <span>如果申请被拒，我该怎么办？</span>
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left font-medium text-dark flex justify-between items-center">
+                        <span class="faq-question">如果申请被拒，我该怎么办？</span>
                         <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="pb-4 text-dark/70">
+                        <p class="faq-answer pb-4 text-dark/70">
                             查看被拒绝的具体原因后重新提交申请。
                         </p>
                     </div>
@@ -387,25 +374,26 @@
     <footer class="bg-white py-8 border-t border-gray-100">
         <div class="container mx-auto px-4">
             <div class="text-center">
-                <p class="text-dark/60 text-sm">
-                    &copy; <span id="currentYear"></span> <a href="https://github.com/Ading163/SGEI-Email-Template" target="_blank">Ding</a> 保留版权
+                <p class="footer-copyright text-dark/60 text-sm">
+                    &copy; <span id="currentYear"></span> <a href="https://github.com/Ading163/SGEI-Email-Template"
+                        target="_blank">Ding</a> 保留版权
                 </p>
-                <p class="text-dark/50 text-xs mt-1">
+                <p class="footer-info1 text-dark/50 text-xs mt-1">
                     本网站不会主动收集任何个人信息
                 </p>
-                <p class="text-dark/40 text-xs mt-2">
+                <p class="footer-info2 text-dark/40 text-xs mt-2">
                     本网站由AI生成 内容仅供参考，不代表任何官方立场，如有侵权联系删除
                 </p>
             </div>
         </div>
     </footer>
 
-
     <!-- 模态框 -->
     <div id="modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0"
+            id="modalContent">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-dark">确认申请信息</h3>
+                <h3 class="confirm-Application-Information text-xl font-bold text-dark">确认申请信息</h3>
                 <button id="closeModal" class="text-dark/50 hover:text-dark">
                     <i class="fa fa-times text-xl"></i>
                 </button>
@@ -414,10 +402,12 @@
                 <!-- 内容将通过JS动态填充 -->
             </div>
             <div class="flex justify-end gap-4">
-                <button id="cancelModal" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                    返回
+                <button id="cancelModal"
+                    class="cancel-button px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                    取消
                 </button>
-                <button id="confirmSend" class="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors">
+                <button id="confirmSend"
+                    class="confirm-button px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors">
                     确认发送
                 </button>
             </div>
@@ -433,242 +423,11 @@
             <img src="" alt="二维码大图" id="previewQrcodeImage" class="image-preview rounded-xl">
         </div>
     </div>
-
+    <script src="js/languages.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        // 当前年份
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // 检测是否在微信或其他应用内置浏览器中打开
-        function checkBrowser() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isWeChat = userAgent.indexOf('micromessenger') !== -1;
-            const isQQ = userAgent.indexOf('qq/') !== -1;
-            const isDingTalk = userAgent.indexOf('dingtalk') !== -1;
-            
-            if (isWeChat || isQQ || isDingTalk) {
-                // 显示浏览器检测遮罩
-                const browserOverlay = document.getElementById('browserOverlay');
-                const browserModal = document.getElementById('browserModal');
-                
-                browserOverlay.classList.remove('hidden');
-                setTimeout(() => {
-                    browserModal.classList.remove('scale-95', 'opacity-0');
-                    browserModal.classList.add('scale-100', 'opacity-100');
-                }, 10);
-                
-                // 阻止用户滚动
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        
-        checkBrowser();
-
-        // 关闭浏览器检测模态框
-        // document.getElementById('closeBrowserModal').addEventListener('click', () => {
-        //     const browserOverlay = document.getElementById('browserOverlay');
-        //     const browserModal = document.getElementById('browserModal');
-            
-        //     browserModal.classList.remove('scale-100', 'opacity-100');
-        //     browserModal.classList.add('scale-95', 'opacity-0');
-            
-        //     setTimeout(() => {
-        //         browserOverlay.classList.add('hidden');
-        //         // 恢复滚动
-        //         document.body.style.overflow = 'auto';
-        //     }, 300);
-        // });
-
-        // 导航栏滚动效果
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2', 'shadow-md');
-                navbar.classList.remove('py-3', 'shadow-sm');
-            } else {
-                navbar.classList.add('py-3', 'shadow-sm');
-                navbar.classList.remove('py-2', 'shadow-md');
-            }
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // 邮件模板
-        const emailTemplates = {
-            mrtCard: {
-                to: "registrykd@segi.edu.my",
-                subject: "FOR STUDENT STATUS LETTER (MRT Card)",
-                body: "Dear Sir /Madam,\n\nFull Name: \nPassport Number: \nStudent ID: \nI am from China. I would like to request a confirmation letter from SEGi to apply for a student MRT card.\n\nBest Regard,"
-            },
-            bankCard: {
-                to: "registrykd@segi.edu.my",
-                subject: "FOR BANK RECOMMENDATION LETTER APPLICATION",
-                body: "Dear Sir /Madam,\n\nFull Name: \nPassport Number: \nStudent ID: \nNationality: \nBank Name: \n\nApply for a bank card to apply for recommended credit for paying rent and daily living expenses\n\nBest Regard,"
-            },
-            studentCard: {
-                to: "registrykd@segi.edu.my",
-                subject: "Apply for new student id card",
-                body: "Dear Sir /Madam,\n\nThe following is my detailed information.\n1. FULL NAME :\n2. PASSPORT :\n\nTHANK YOU FOR HELP"
-            }
-        };
-
-        // 模态框相关
-        const modal = document.getElementById('modal');
-        const modalContent = document.getElementById('modalContent');
-        const modalBody = document.getElementById('modalBody');
-        let currentTemplateKey = '';
-
-        // 打开模态框
-        function openModal(key) {
-            currentTemplateKey = key;
-            const template = emailTemplates[key];
-            
-            // 填充模态框内容，收件人和主题字段设为只读
-            modalBody.innerHTML = `
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-dark/70 mb-2">收件人:</label>
-                        <input type="text" value="${template.to}" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-dark/70" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-dark/70 mb-2">主题:</label>
-                        <input type="text" value="${template.subject}" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-dark/70" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-dark/70 mb-2">内容:</label>
-                        <textarea rows="6" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">${template.body}</textarea>
-                    </div>
-                    <p class="text-sm text-accent/80">
-                        <i class="fa fa-info-circle"></i> 请在邮件中补充您的个人信息
-                    </p>
-                </div>
-            `;
-            
-            // 显示模态框并添加动画
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modalContent.classList.remove('scale-95', 'opacity-0');
-                modalContent.classList.add('scale-100', 'opacity-100');
-            }, 10);
-        }
-
-        // 关闭模态框
-        function closeModal() {
-            modalContent.classList.remove('scale-100', 'opacity-100');
-            modalContent.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // 发送邮件
-        function sendEmail() {
-            const template = emailTemplates[currentTemplateKey];
-            // 获取用户修改后的内容
-            const content = document.querySelector('#modalBody textarea').value;
-            const mailUrl = `mailto:${template.to}?subject=${encodeURIComponent(template.subject)}&body=${encodeURIComponent(content)}`;
-            
-            // 尝试在新窗口打开邮件客户端
-            window.open(mailUrl, '_blank');
-            closeModal();
-        }
-
-        // 事件绑定
-        document.getElementById('sendMRTCardEmail').addEventListener('click', () => openModal('mrtCard'));
-        document.getElementById('sendBankCardEmail').addEventListener('click', () => openModal('bankCard'));
-        document.getElementById('sendStudentCardEmail').addEventListener('click', () => openModal('studentCard'));
-        document.getElementById('closeModal').addEventListener('click', closeModal);
-        document.getElementById('cancelModal').addEventListener('click', closeModal);
-        document.getElementById('confirmSend').addEventListener('click', sendEmail);
-
-        // 点击模态框外部关闭
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // FAQ手风琴效果
-        document.querySelectorAll('.faq-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const content = toggle.nextElementSibling;
-                const icon = toggle.querySelector('i');
-                
-                // 关闭其他所有FAQ
-                document.querySelectorAll('.faq-content').forEach(item => {
-                    if (item !== content) {
-                        item.style.maxHeight = null;
-                        item.style.paddingTop = '0';
-                    }
-                });
-                
-                document.querySelectorAll('.faq-toggle i').forEach(i => {
-                    if (i !== icon) {
-                        i.style.transform = 'rotate(0deg)';
-                    }
-                });
-                
-                // 切换当前FAQ
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    content.style.paddingTop = '0';
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                    content.style.paddingTop = '1rem';
-                    icon.style.transform = 'rotate(180deg)';
-                }
-            });
-        });
-
-        // 默认打开第一个FAQ
-        if (document.querySelector('.faq-toggle')) {
-            document.querySelector('.faq-toggle').click();
-        }
-
-        // 二维码预览功能
-        const qrcodeModal = document.getElementById('qrcodeModal');
-        const qrcodeImage = document.getElementById('qrcodeImage');
-        const previewQrcodeImage = document.getElementById('previewQrcodeImage');
-        
-        document.getElementById('qrcodeContainer').addEventListener('click', () => {
-            // 获取原始图片URL
-            const imageUrl = qrcodeImage.src;
-            // 设置预览图片
-            previewQrcodeImage.src = imageUrl;
-            // 显示模态框
-            qrcodeModal.classList.remove('hidden');
-            // 添加淡入动画
-            previewQrcodeImage.classList.add('opacity-0');
-            setTimeout(() => {
-                previewQrcodeImage.classList.remove('opacity-0');
-            }, 10);
-        });
-
-        // 关闭二维码预览
-        document.getElementById('closeQrcodeModal').addEventListener('click', () => {
-            qrcodeModal.classList.add('hidden');
-        });
-
-        // 点击模态框外部关闭
-        qrcodeModal.addEventListener('click', (e) => {
-            if (e.target === qrcodeModal) {
-                qrcodeModal.classList.add('hidden');
-            }
-        });
     </script>
 </body>
+
 </html>
